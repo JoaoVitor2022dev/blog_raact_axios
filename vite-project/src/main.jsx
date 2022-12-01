@@ -2,25 +2,29 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 
-import { createBrowserRoute , RouterProvider , Route } from "react-router-dom";
+// import de rotas para o DOM 
+import { createBrowserRouter , RouterProvider , Router } from "react-router-dom";
+
+// css 
 import './index.css'
 
+// paginas 
+import Home from './routes/Home';
+import NewPost from './routes/NewPost';
 
-const Route = createBrowserRoute( [
+
+const router = createBrowserRouter( [
   {
-    element: <App />,
+    element: <App/>,
     children: [
-      {
-        path: "/",
-      },
-      {
-        path: "/new",
-      }
-    ]  
-  }
-  ]); 
+      { path: "/", element: <Home/>},
+      { path: "/new", element: <NewPost/>},
+    ],  
+  },
+]); 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 )
