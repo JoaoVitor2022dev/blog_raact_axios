@@ -4,6 +4,8 @@ import { useState , useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
+import "../routes/Home.css"; 
+
 const Home = () => {
   const [posts, setPosts] = useState([]);   
  
@@ -11,7 +13,9 @@ const Home = () => {
     try {
      const response = await axios.get('https://jsonplaceholder.typicode.com/posts')  
        const data = response.data; 
-         console.log(data);
+         
+         setPosts(data); 
+        
     } catch (error) {
        console.log(error);
     }
@@ -22,7 +26,19 @@ const Home = () => {
   },[]);
 
   return (
-    <div>Home</div>
+    <div>
+      <h1>ultimos post</h1> 
+      {posts.length === 0 ? (<p>Carregando...</p>) : (
+        posts.map( (post)=> (
+           <div className="post" key={post.id}>
+              <h2>{post.title}</h2>
+              <div>
+                <p>{post.body}</p>
+              </div>
+           </div>
+        ))
+      )}
+    </div>
   )
 }
 
