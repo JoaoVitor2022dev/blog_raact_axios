@@ -26,15 +26,14 @@ const Home = () => {
   },[]);
 
   return (
-    <div>
+    <div className="home">
       <h1>ultimos post</h1> 
       {posts.length === 0 ? (<p>Carregando...</p>) : (
         posts.map( (post)=> (
            <div className="post" key={post.id}>
               <h2>{post.title}</h2>
-              <div>
                 <p>{post.body}</p>
-              </div>
+                <Link to={`/posts/${post.id}`} className="btn">Ler mais...</Link>
            </div>
         ))
       )}
