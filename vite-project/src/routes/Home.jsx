@@ -11,7 +11,7 @@ const Home = () => {
  
   const getPosts =  async () => {
     try {
-     const response = await axios.get('/posts');   
+     const response = await blogFetch.get('/posts');   
        const data = response.data; 
          
          setPosts(data); 
@@ -24,15 +24,18 @@ const Home = () => {
   useEffect(()=> {
      getPosts(); 
   },[]);
+ 
+
 
   return (
     <div className="home">
       <h1>ultimos post</h1> 
       {posts.length === 0 ? (<p>Carregando...</p>) : (
-        posts.map( (post)=> (
+        posts.map((post)=> (
            <div className="post" key={post.id}>
               <h2>{post.title}</h2>
                 <p>{post.body}</p>
+                <p>{post.phone}</p>
                 <Link to={`/posts/${post.id}`} className="btn">Ler mais...</Link>
            </div>
         ))
