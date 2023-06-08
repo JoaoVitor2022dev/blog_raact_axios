@@ -1,5 +1,5 @@
 
-# ReactGram - JavaScript
+# Mine Blog consumido em AXIOS
 
 * Projeto de consumir API com método AXIOS em React.js 
 
